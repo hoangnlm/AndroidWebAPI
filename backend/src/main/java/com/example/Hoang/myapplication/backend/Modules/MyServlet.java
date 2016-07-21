@@ -4,7 +4,7 @@
    https://github.com/GoogleCloudPlatform/gradle-appengine-templates/tree/master/HelloWorld
 */
 
-package com.example.Hoang.myapplication.backend;
+package com.example.Hoang.myapplication.backend.modules;
 
 import java.io.IOException;
 
