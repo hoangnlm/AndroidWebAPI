@@ -2,7 +2,9 @@ package vn.t3h.androidwebapi;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.util.Pair;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,6 +25,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 
 public class ServletPostAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+    private static final String TAG = "ServletPostAsyncTask";
     private Context context;
 
     @Override
@@ -31,8 +34,10 @@ public class ServletPostAsyncTask extends AsyncTask<Pair<Context, String>, Void,
         String name = params[0].second;
 
         try {
+
             // Set up the request
-            URL url = new URL("http://10.0.2.2:8080/hello");
+//            URL url = new URL("http://127.0.0.1/hello");
+            URL url = new URL("http://hoangproject1.appspot.com/hello");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoInput(true);
@@ -62,12 +67,14 @@ public class ServletPostAsyncTask extends AsyncTask<Pair<Context, String>, Void,
             }
             reader.close();
 
+
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 return response.toString();
             }
             return "Error: " + responseCode + " " + connection.getResponseMessage();
 
         } catch (IOException e) {
+            Log.d(TAG, e.getMessage());
             return e.getMessage();
         }
     }

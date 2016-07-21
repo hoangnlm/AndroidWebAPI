@@ -4,7 +4,7 @@
    https://github.com/GoogleCloudPlatform/gradle-appengine-templates/tree/master/HelloWorld
 */
 
-package com.example.Hoang.myapplication.backend.modules;
+package com.example.Hoang.myapplication.backend;
 
 import java.io.IOException;
 
@@ -22,6 +22,7 @@ public class MyServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         String name = req.getParameter("name");
+        req.getReader();
         resp.setContentType("text/plain");
         if (name == null) {
             resp.getWriter().println("Please enter a name");
